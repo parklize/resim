@@ -1,5 +1,5 @@
 # RESIM DESCRIOPTION
-The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is an implementation of RESIM (REsource SIMilarity) measure. RESIM is presented in [1] and then is improved in [2] and the summary of the measure is presented in [3].
+The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is an implementation of RESIM (REsource SIMilarity) measure. RESIM is presented in [1] and then it is improved in [2] and the summary of the measure is presented in [3].
 
 ## REQUIREMENT
 JENA 2.11.2
