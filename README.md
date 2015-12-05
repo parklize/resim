@@ -2,7 +2,8 @@
 The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is an implementation of RESIM (REsource SIMilarity) measure. The measure is designed to calculate the semantic similarity between two resources in a Knowlege Graph (e.g., DBpedia, zhishi.me) with a SPARQL Endpoint. RESIM is presented in [1] and then it is improved in [2] and the summary of the measure is presented in [3].
 
 ## REQUIREMENT
-JENA 2.11.2
+* Java 1.7
+* JENA 2.11.2
 
 ## EXAMPLE
 	public static void main(String[] args) {
