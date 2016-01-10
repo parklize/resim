@@ -1,3 +1,5 @@
+![alt tag] (https://lh3.googleusercontent.com/X66bX7yvTWSAoawXIigkTNhmdcsCyHPkEZdBZmJ03UvtrKsY6fPwMUpXPyGwDQirthgD5hhvLIKREkYTJiVMqOB8esAx01ftcXmoOo9vBiqcg8o82AvTNvg10BUBMIUUUk4ZlcUfMKwPmbAvcpLLaXA7NQ-s2BT5L3A2Cwjy-fQVpgjB8oLZn4apoMd_ShR0-1P78qyKwhZloKdfp4Q0qNyiULcK7ivhpAPVn2RR1OUj0LMIF1dFw5LmXpcV-LyZViELeYqxi3P4eLwKs7hMtd0DmVCzCzqQq_ftPC9XLAUnBuLEE-LDUb671r8Pz8gY83dsjQgycQ8NVVUpWr_ypfyUMeCTg7oDmlV86w3Vea0676c2ZMPlOtDAWTzzS10YxaPCpSI15k6iRmWgBAiSbX3p31KUm3lktpR_la9LL2qWe1W_nAchnH4ShjsBYz5DQkWjpdU6dts59ohHWAJIadUd_WzY-3vmwA6_GMKei4WftFm3CbMKScIgXSiSYFC6EOPWBUSUPXW36biM4ZXgmt_rR1-OJonsJ2ehGL9gnvOI5MpLzZ38rIbcg2XL_pE4CW14=w354-h75-no)
+
 # RESIM DESCRIOPTION
 The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is an implementation of RESIM (REsource SIMilarity) measure. The measure is designed to calculate the semantic similarity between two resources in a Knowlege Graph (e.g., DBpedia, zhishi.me) with a SPARQL Endpoint. RESIM is presented in [1] and then it is improved in [2] and the summary of the measure is presented in [3].
 
