@@ -7,7 +7,7 @@ The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is
 * Java 1.7
 * JENA 2.11.2
 
-## EXAMPLE
+## EXAMPLE 1
 	public static void main(String[] args) {
 		
 		// similarity measure settings
@@ -38,8 +38,30 @@ The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is
 		ResourceSimilarityMeasure rsm = new ResourceSimilarityMeasure("http://dbpedia.org/sparql", null, null, additionalPropertyList, excludePropertyList);	
 		
 		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Drink>", "<http://dbpedia.org/resource/Mouth>", 2));
+	
 	}
 	
+## EXAMPLE 2
+	public static void main(String[] args) {
+		
+		List<String> excludePropertyList = Arrays.asList("<http://dbpedia.org/ontology/wikiPageWikiLink>");
+		ResourceSimilarityMeasure rsm = new ResourceSimilarityMeasure("http://dbpedia.org/sparql", null, null, null, excludePropertyList);	
+		
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/Steve_Jobs>", 2));
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/Steve_Wozniak>", 2));
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/Jonathan_Ive>", 2));
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/Microsoft>", 2));
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/IPad>", 2));
+		
+		// Printed results
+		0.7107697604926099
+		0.26084710667467736
+		0.13425729687979637
+		0.6239711506085717
+		0.7341358492281069
+		Started: 18.1.2016 21:54:42 Finished: 18.1.2016 21:55:12
+		
+	}
 * The ResourceSimilarityMeasure requires 5 parameters. The first one is a SPARQL Endpoint (e.g., DBpedia SPARQL Endpoint) and the other ones are used for controling the property list for this measure. 
 * The 2nd parameter (pattern) is used with 4th, 5th parameters. For example, the default pattern of property for this measure is "http://dbpedia.org/ontology/" (i.e., DBpedia Ontology properties) and it will consider/exclude the list of properties if there is an additional property list or an exclude property list exist.
 * The 3rd parameter is an include property list that controls property list for this measure in a strict way. That is, the measure will only consider this property list if you define the list. 
