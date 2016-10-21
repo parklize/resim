@@ -226,6 +226,6 @@ The example shows using RESIM to calculate the similarity between HongKong and S
 	
 ## REFENRECES
 1. Computing the Semantic Similarity of Resources in DBpedia for Recommendation Purposes, 
-   Guangyuan Piao, Safina showkat Ara, John G. Breslin 5th Joint International Semantic Technology Conference, Yichang, China, 2015
-2. Measuring Semantic Similarity for Linked Open Data-enabled Recommender Systems, Guangyuan Piao and John G. Breslin, The 31st             ACM/SIGAPP Symposium on Applied Computing, Pisa, Italy, 2016
+   Guangyuan Piao, Safina showkat Ara, John G. Breslin 5th Joint International Semantic Technology Conference, Yichang, China, 2015 [[PDF]](https://www.researchgate.net/publication/298070195_Computing_the_Semantic_Similarity_of_Resources_in_DBpedia_for_Recommendation_Purposes)
+2. Measuring Semantic Similarity for Linked Open Data-enabled Recommender Systems, Guangyuan Piao and John G. Breslin, The 31st             ACM/SIGAPP Symposium on Applied Computing, Pisa, Italy, 2016 [[PDF]](https://www.researchgate.net/publication/298070201_Measuring_Semantic_Distance_for_Linked_Open_Data-enabled_Recommender_Systems)
 3. Exploiting the Semantic Similarity of Interests in a Semantic Interest Graph for Social Recommendations, Guangyuan Piao, The 31st        ACM/SIGAPP Symposium on Applied Computing, Pisa, Italy, 2016
