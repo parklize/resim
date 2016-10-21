@@ -1,13 +1,15 @@
 ![alt tag] (https://lh3.googleusercontent.com/lSPWRu9qbTLvs5wHHvYrBq7Ud_XZo5osbLmQioj4Yex799qEdLw7Tyr0L6J8vEYDMBxaRMqBsAIRfbkDGZOUp_v1EperUpH_o4Hm9wkzF7V4ySdNLEjJ3mmlYyg37FC6LFWl6_KKIqZqzMOe_YQgq-As8gPeWgaeQP4-799dzubOSYBDELHInYOjYYhgAls1d4xEUdO6sL4vcLjO1xDjKgXPMvbFntZbO5kwgbwNDZp5XhvhfNV1OuCmhojSru2ijv4Av4mGzHI3NN4sedr31S2RhPIrf2XquKfGUlZ2bdREE7GU-V0EUnboph9b4Seov1S4NS35IpGZz7TTa6I-uUwKJWHH2PR4Xuj2OJ-MHRtAsDlRBV7-WqRV1yqKM5Vm9kkXWOvmer81SX8IzBzwsf3Mf42hf3K3sOQOvrNP1BpewUuJwo1vbQWRNaXV7IKZwJT889kIWqmAbGWeveQIDPPpA7YlbgASL4Nb1e14h5T8vbQ3oxDfVxHHvl8hLCcYYkbzZq8Qbdj51fo-YV4l_aXrD05-tI6UVaEMWCPNXu_lsQsLfnOS-QzH5b7fWgLspUfo=w354-h75-no)
 
-# DESCRIOPTION
-The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is an implementation of RESIM (REsource SIMilarity) measure. The measure is designed to calculate the semantic similarity between two resources in a Knowlege Graph (e.g., DBpedia, zhishi.me) with a SPARQL Endpoint. RESIM is presented in [1] and then it is improved in [2] and the summary of the measure is presented in [3].
+# DESCRIPTION
+The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is an implementation of RESIM (REsource SIMilarity) measure. The measure is designed to calculate the semantic similarity between two resources in a Knowlege Graph (e.g., DBpedia, zhishi.me) with a SPARQL Endpoint. RESIM is presented in [1] and then it is improved in [2] and the summary of the measure is presented in [3]. The implementation extends the measure further by enabling different properties for two resources, e.g., for incoming indirect link between dbpedia:Steve_Jobs and dbpedia:Apple_Inc., it can be connected by dbpedia:Steve_Jobs<-dbpedia-owl:keyPerson<-dbpedia:NexT->dbpedia-owl:successor->dbpedia:Apple_Inc. while in the paper we restrict the property should be the same. 
+
+When writing a paper or producing a software application, tool, or interface based on the library, please kindly cite the source [2].
 
 ## REQUIREMENT
 * Java 1.7
 * JENA 2.11.2
 
-## EXAMPLE
+## EXAMPLE 1
 	public static void main(String[] args) {
 		
 		// similarity measure settings
@@ -38,8 +40,30 @@ The [resim.jar](https://github.com/parklize/resim/blob/master/resim.jar) file is
 		ResourceSimilarityMeasure rsm = new ResourceSimilarityMeasure("http://dbpedia.org/sparql", null, null, additionalPropertyList, excludePropertyList);	
 		
 		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Drink>", "<http://dbpedia.org/resource/Mouth>", 2));
+	
 	}
 	
+## EXAMPLE 2
+	public static void main(String[] args) {
+		
+		List<String> excludePropertyList = Arrays.asList("<http://dbpedia.org/ontology/wikiPageWikiLink>");
+		ResourceSimilarityMeasure rsm = new ResourceSimilarityMeasure("http://dbpedia.org/sparql", null, null, null, excludePropertyList);	
+		
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/Steve_Jobs>", 2));
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/Steve_Wozniak>", 2));
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/Jonathan_Ive>", 2));
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/Microsoft>", 2));
+		System.out.println(rsm.getSimilarity("<http://dbpedia.org/resource/Apple_Inc.>", "<http://dbpedia.org/resource/IPad>", 2));
+		
+		// Printed results
+		0.7107697604926099
+		0.26084710667467736
+		0.13425729687979637
+		0.6239711506085717
+		0.7341358492281069
+		Started: 18.1.2016 21:54:42 Finished: 18.1.2016 21:55:12
+		
+	}
 * The ResourceSimilarityMeasure requires 5 parameters. The first one is a SPARQL Endpoint (e.g., DBpedia SPARQL Endpoint) and the other ones are used for controling the property list for this measure. 
 * The 2nd parameter (pattern) is used with 4th, 5th parameters. For example, the default pattern of property for this measure is "http://dbpedia.org/ontology/" (i.e., DBpedia Ontology properties) and it will consider/exclude the list of properties if there is an additional property list or an exclude property list exist.
 * The 3rd parameter is an include property list that controls property list for this measure in a strict way. That is, the measure will only consider this property list if you define the list. 
