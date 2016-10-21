@@ -9,6 +9,8 @@ When writing a paper or producing a software application, tool, or interface bas
 * Java 1.7
 * JENA 2.11.2
 
+Simply add jena files as well as RESIM.jar file in your building path.
+
 ## EXAMPLE 1
 	public static void main(String[] args) {
 		
