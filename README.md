@@ -221,7 +221,35 @@ The example shows using RESIM to calculate the similarity between HongKong and S
 * P6: Outbound property list
 * P7: Additional property list. This can be used with P4. For example, after defining property filtering pattern, e.g., "http://dbpedia.org/ontology/", and you can define this list (e.g., "http://purl.org/dc/terms/subject") to add more properties for consideration.
 * P8: Exclude property list. Similary to P7, define the list to exclude some properties from defined property filtering pattern.
+
+
+## USING HDT FOR RESIM
+HDT (http://www.rdfhdt.org/) (Header, Dictionary, Triples) is a compact data structure and binary serialization format for RDF that keeps big datasets compressed to save space while maintaining search and browse operations without prior decompression. The [RESIMHDT.jar](https://github.com/parklize/resim/blob/master/RESIMHDT.jar) provides the RESIM implementation on top of hdt format of DBpedia etc., which has been used in the original paper [2]. If you need many pairs of calculations, this might be more suitable for you as it does the calcualtion on local hdt file of DBpedia or other Linked Data. This implementation has following requriements:
+
+* converted hdt file of DBpedia, which can be downloaded from http://www.rdfhdt.org/
+* hdt related libraries
+* Java 1.7
 	
+## EXAMPLE 4
+	public static void main(String[] args) throws IOException {
+		
+		List<String> property_list = ResourceRestrictionConfiguration.property_list;	// Property list for consideration
+		List<String> excluding_property_list = ResourceRestrictionConfiguration.exclude_property_list;	// excluding property list while considering all properties
+		
+		/* Load DBpedia hdt file */
+		HDT hdt = HDTManager.mapIndexedHDT("/Users/guangyuan/Documents/workspace02/PhDProject/dataset/DBpediaHDT/DBPedia-3.9-en.hdt", null); // Load HDT file
+		System.out.println("Finished initializing HDT...");
+		
+		/* Initialize Resim measure */
+		RESIMSimilarityCalculator resim = new RESIMSimilarityCalculator(hdt, property_list, excluding_property_list);
+		
+		/* Calculate similarity */
+		double sim = resim.getSimWithGlobalNormalization("http://dbpedia.org/resource/Demi_Lovato", "http://dbpedia.org/resource/Lady_Gaga");
+		System.out.println("similarity: " + sim);
+		
+	}
+
+
 ## REFENRECES
 1. Computing the Semantic Similarity of Resources in DBpedia for Recommendation Purposes, 
    Guangyuan Piao, Safina showkat Ara, John G. Breslin 5th Joint International Semantic Technology Conference, Yichang, China, 2015 [[PDF]](https://www.researchgate.net/publication/298070195_Computing_the_Semantic_Similarity_of_Resources_in_DBpedia_for_Recommendation_Purposes)
